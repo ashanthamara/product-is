@@ -55,6 +55,7 @@ PR_LINK=${PR_LINK%/}
 JDK_VERSION=${JDK_VERSION%/}
 JAVA_8_HOME=${JAVA_8_HOME%/}
 JAVA_11_HOME=${JAVA_11_HOME%/}
+BRANCH_NAME="scim-test-branch"
 echo "    PR_LINK: $PR_LINK"
 echo "    JAVA 8 Home: $JAVA_8_HOME"
 echo "    JAVA 11 Home: $JAVA_11_HOME"
@@ -74,6 +75,10 @@ echo "Cloning product-is"
 echo "=========================================================="
 
 git clone https://github.com/wso2/product-is product-is-$BUILDER_NUMBER
+echo "Checking out branch: $BRANCH_NAME"
+cd product-is-$BUILDER_NUMBER
+git checkout "$BRANCH_NAME"
+cd ..
 
 disable_tests "$ENABLED_TESTS"
 
